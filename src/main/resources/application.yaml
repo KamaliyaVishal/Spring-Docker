@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: docker-service
+
+# PostgreSQL Database Connection Settings
+  datasource:
+    url: jdbc:postgresql://localhost:5432/studentDB
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+
+  # JPA / Hibernate Configurations
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
