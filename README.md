@@ -35,23 +35,8 @@ Instead of installing Java, Maven, and every dependency directly on a machine an
 Docker follows a client-server architecture:
 
 ```
-┌────────────────────┐        REST API        ┌───────────────────────────────┐
-│   Docker Client     │ ─────────────────────▶ │        Docker Daemon          │
-│ (docker CLI / API)  │                        │         (dockerd)             │
-└────────────────────┘                        │                               │
-                                                │  ┌─────────┐   ┌───────────┐ │
-                                                │  │ Images  │   │Containers │ │
-                                                │  └─────────┘   └───────────┘ │
-                                                │  ┌─────────┐   ┌───────────┐ │
-                                                │  │ Networks│   │  Volumes  │ │
-                                                │  └─────────┘   └───────────┘ │
-                                                └───────────────┬───────────────┘
-                                                                │
-                                                                ▼
-                                                     ┌────────────────────┐
-                                                     │   Docker Registry   │
-                                                     │ (e.g. Docker Hub)   │
-                                                     └────────────────────┘
+<img width="1408" height="768" alt="image" src="https://github.com/user-attachments/assets/0a1a33a2-4963-46b7-a6c4-095f8a6a3cb9" />
+
 ```
 
 **Key components:**
