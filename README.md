@@ -30,13 +30,15 @@ Instead of installing Java, Maven, and every dependency directly on a machine an
 - **Easier scaling and deployment.** Spinning up more instances of a service is as simple as running more containers from the same image — a natural fit for microservices.
 - **Simplified onboarding.** A new developer can get the whole stack running with a single `docker-compose up` instead of manually installing and configuring every dependency.
 
-## Docker Architecture
+## Docker Architecture (Detailed Component & Runtime Architecture)
 
 Docker follows a client-server architecture:
 
-
 <img width="1408" height="768" alt="image" src="https://github.com/user-attachments/assets/0a1a33a2-4963-46b7-a6c4-095f8a6a3cb9" />
 
+## Docker Architecture (High-Level Client-Server (Logical) Architecture)
+
+<img width="1408" height="768" alt="image" src="https://github.com/user-attachments/assets/21cb6096-18c0-4b86-be5b-14945ffbb4fd" />
 
 
 **Key components:**
