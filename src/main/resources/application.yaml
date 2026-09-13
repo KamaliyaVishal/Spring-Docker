@@ -2,12 +2,11 @@ spring:
   application:
     name: docker-service
 
-# PostgreSQL Database Connection Settings
+# PostgreSQL Database Connection Settings (Placeholder to resolve for Docker host and fallback for local machine)
   datasource:
-    url: jdbc:postgresql://localhost:5432/studentDB
-    username: postgres
-    password: admin
-    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${DB_HOST_URL:localhost}:5432/${DB_NAME:studentDB}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:admin}
 
   # JPA / Hibernate Configurations
   jpa:

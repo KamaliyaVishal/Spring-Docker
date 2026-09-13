@@ -20,7 +20,7 @@ public class StudentServiceImpl implements StudentService {
     private final ModelMapper modelMapper;
 
     @Override
-    @Cacheable(cacheNames = "getAllStudentsList")
+    //@Cacheable(cacheNames = "getAllStudentsList")
     public List<StudentResponse> getAllStudentsList() {
         /*return studentRepository.findAll().stream()
                 .map(this::mapToResponse)
@@ -34,7 +34,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    @Cacheable(cacheNames = "getStudentByID", key = "#id")
+    //@Cacheable(cacheNames = "getStudentByID", key = "#id")
     public StudentResponse getStudentByID(Integer id) {
         Student student = studentRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Student not found"));

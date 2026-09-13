@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  # 1. PostgreSQL Database Service
+  postgresDb:
+    image: postgres:15-alpine
+    container_name: postgres-db-container
+    environment:
+      POSTGRES_DB: student_db
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mysecurepassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - student-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U myuser -d student_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # 2. Student Service (Spring Boot)
+  studentservice:
+    image: vishalkamaliya/docker-service:latest  # Replace with your Docker Hub image or local image name
+    container_name: student-service-container
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_HOST_URL=postgresDb       # Matches the service name of the database
+      - DB_NAME=student_db
+      - DB_USERNAME=myuser
+      - DB_PASSWORD=mysecurepassword
+    depends_on:
+      postgresDb:
+        condition: service_healthy   # Waits until PostgreSQL is fully ready to accept connections
+    networks:
+      - student-network
+
+# Named volume to persist database records even if container stops
+volumes:
+  pgdata:
+
+# Shared custom network for secure communication between containers
+networks:
+  student-network:
+    driver: bridge
